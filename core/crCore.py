@@ -284,20 +284,31 @@ def toolStatus(package, doqPackage):
 				os.system("chmod +x ngrok")
 				os.chdir("../")
 				os.system("mv ps.ngrok ~/")
+				print(tag1+"Successful install")
+				toolStatus("shodan    ", True)
+			else:
+				print(tag3+"Canceled")
+				toolStatus("shodan    ", True)
+
+		elif(package == "shodan    "):
+			if (chserPackage == "yes" or chserPackage == "y"):
+				os.system("pkg install python ")
+				os.system("easy_install shodan")
+				os.system("pip install shodan request")
 				print("")
-				print(tag1+"All Packages Succeful instaled. Enjoy")
+				print(tag1+"All Packages Successful instaled. Enjoy")
 				print(tag1+"Thanks for using this tool")
 				exit()
 			else:
 				print("")
-				print(tag1+"All Packages Succeful instaled. Enjoy")
+				print(tag1+"All Packages Successful instaled. Enjoy")
 				print(tag1+"Thanks for using this tool")
 				exit()
 	
 			
 	elif(doqPackage == False):
 		print("")
-		print(tag1+"All Packages Succeful instaled. Enjoy")
+		print(tag1+"All Packages Successful instaled. Enjoy")
 		print(tag1+"Thanks for using this tool")
 		exit()
 		
