@@ -130,11 +130,15 @@ def toolStatus(package, doqPackage):
 	
 	if(doqPackage == True):
 		if(package == "update    "):
-			os.system("exit")
-			os.system("pkg upgrade && apt update && apt upgrade")
-			print("")
-			print(tag1+"Successful install")
-			toolStatus("default   ", True)
+			if (chserPackage == "yes" or chserPackage == "y"):
+				os.system("exit")
+				os.system("pkg upgrade && apt update && apt upgrade")
+				print("")
+				print(tag1+"Successful install")
+				toolStatus("default   ", True)
+			else:
+				print(tag3+"Canceled")
+				toolStatus("default   ", True)
 				
 		elif(package == "default   "):
 			if (chserPackage == "yes" or chserPackage == "y"):
@@ -242,7 +246,6 @@ def toolStatus(package, doqPackage):
 			if (chserPackage == "yes" or chserPackage == "y"):
 				os.system("apt install -y git")
 				os.system("git clone https://github.com/threat9/routersploit.git")
-				os.system("mv routersploit ~/")
 				print(tag+"Installing pip - Requirements.txt and Requirements-dev.txt"+"\n")
 				os.chdir(r"routersploit/") 
 				time.sleep(1)
@@ -250,6 +253,7 @@ def toolStatus(package, doqPackage):
 				os.system("pip install future")
 				os.system("pip install -r requirements-dev.txt")
 				os.chdir(r"../") 
+				os.system("mv routersploit ~/")
 				print("")
 				print(tag1+"Successful install")
 				toolStatus("nmap      ", True)
